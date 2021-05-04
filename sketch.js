@@ -64,7 +64,7 @@ function spawnObstacles (){
   if(frameCount %300 === 0){
     var obstacle = createSprite(800,350,10,40);
     obstacle.addImage(obstacleImage);
-    obstacle.scale = 0.02;
+    obstacle.scale = 0.2;
     obstacle.velocityX= -6;
 
     obstacle.lifetime = 300;
@@ -119,11 +119,11 @@ function draw() {
 
       default:break
   }
-  if(monkey.isTouching(FoodGroup)){
+  if(FoodGroup.isTouching(monkey)){
     FoodGroup.destroyEach();
     score = score+2;
   }
-  if(monkey.isTouching(ObstacleGroup)){
+  if(ObstacleGroup.isTouching(monkey)){
     gameState = END;
   }
  }
@@ -133,6 +133,7 @@ function draw() {
    ObstacleGroup.setVelocityEach(0);
    backgr.velocityX = 0;
    gameOver.visible = true;
+   monkey.visible = false;
  }
  monkey.collide(invisibleGround);
  
